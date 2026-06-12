@@ -1,0 +1,254 @@
+[
+  {
+    "category": "Google Core",
+    "name": "Node.js / NestJS remote",
+    "query": "(intitle:\"senior full stack\" OR intitle:\"node.js engineer\" OR intitle:\"nestjs developer\") \"remote\" (\"node.js\" OR \"nestjs\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22senior%20full%20stack%22%20OR%20intitle%3A%22node.js%20engineer%22%20OR%20intitle%3A%22nestjs%20developer%22)%20%22remote%22%20(%22node.js%22%20OR%20%22nestjs%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Google Core",
+    "name": "Python / FastAPI / Django remote",
+    "query": "(intitle:\"python engineer\" OR intitle:\"fastapi\" OR intitle:\"django developer\") \"fully remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22python%20engineer%22%20OR%20intitle%3A%22fastapi%22%20OR%20intitle%3A%22django%20developer%22)%20%22fully%20remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Google Core",
+    "name": "React / Next.js remote",
+    "query": "(intitle:\"senior react engineer\" OR intitle:\"next.js developer\" OR intitle:\"frontend engineer\") \"remote\" (\"typescript\" OR \"tailwind\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22senior%20react%20engineer%22%20OR%20intitle%3A%22next.js%20developer%22%20OR%20intitle%3A%22frontend%20engineer%22)%20%22remote%22%20(%22typescript%22%20OR%20%22tailwind%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Google Core",
+    "name": "Laravel / PHP remote",
+    "query": "(intitle:\"laravel developer\" OR intitle:\"php engineer\" OR intitle:\"symfony\") \"remote\" (\"vue.js\" OR \"inertia\" OR \"livewire\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22laravel%20developer%22%20OR%20intitle%3A%22php%20engineer%22%20OR%20intitle%3A%22symfony%22)%20%22remote%22%20(%22vue.js%22%20OR%20%22inertia%22%20OR%20%22livewire%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Google Core",
+    "name": "CMS / Headless WordPress remote",
+    "query": "(intitle:\"wordpress developer\" OR intitle:\"headless cms\" OR intitle:\"sanity developer\") \"remote\" (\"next.js\" OR \"graphql\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22wordpress%20developer%22%20OR%20intitle%3A%22headless%20cms%22%20OR%20intitle%3A%22sanity%20developer%22)%20%22remote%22%20(%22next.js%22%20OR%20%22graphql%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Google Core",
+    "name": "AI / LLM / RAG remote",
+    "query": "(intitle:\"ai engineer\" OR intitle:\"llm engineer\") \"remote\" (\"rag\" OR \"openai\" OR \"vector database\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=(intitle%3A%22ai%20engineer%22%20OR%20intitle%3A%22llm%20engineer%22)%20%22remote%22%20(%22rag%22%20OR%20%22openai%22%20OR%20%22vector%20database%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Jobs Node / NestJS",
+    "query": "site:linkedin.com/jobs \"senior full stack\" \"remote\" (\"node.js\" OR \"nestjs\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs%20%22senior%20full%20stack%22%20%22remote%22%20(%22node.js%22%20OR%20%22nestjs%22)%20after%3A2026-05-01",
+    "reason": "LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Jobs React / Next.js",
+    "query": "site:linkedin.com/jobs (\"senior frontend\" OR \"senior full stack\") \"remote\" (\"next.js\" OR \"react\") \"typescript\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs%20(%22senior%20frontend%22%20OR%20%22senior%20full%20stack%22)%20%22remote%22%20(%22next.js%22%20OR%20%22react%22)%20%22typescript%22%20after%3A2026-05-01",
+    "reason": "LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Jobs Laravel / PHP",
+    "query": "site:linkedin.com/jobs (\"laravel engineer\" OR \"php developer\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fjobs%20(%22laravel%20engineer%22%20OR%20%22php%20developer%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Posts founders hiring directly",
+    "query": "site:linkedin.com/posts (\"hiring\" OR \"we're hiring\") (\"full stack\" OR \"senior full stack\" OR \"react\" OR \"node.js\") (\"remote\" OR \"worldwide\" OR \"anywhere\") after:2026-05-11",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fposts%20(%22hiring%22%20OR%20%22we're%20hiring%22)%20(%22full%20stack%22%20OR%20%22senior%20full%20stack%22%20OR%20%22react%22%20OR%20%22node.js%22)%20(%22remote%22%20OR%20%22worldwide%22%20OR%20%22anywhere%22)%20after%3A2026-05-11",
+    "reason": "LinkedIn posts are best reviewed manually or through approved APIs."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Posts AI / full stack",
+    "query": "site:linkedin.com/posts (\"hiring\" OR \"looking for\") (\"AI engineer\" OR \"full stack engineer\") (\"React\" OR \"Next.js\") (\"Node.js\" OR \"Python\") remote",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fposts%20(%22hiring%22%20OR%20%22looking%20for%22)%20(%22AI%20engineer%22%20OR%20%22full%20stack%20engineer%22)%20(%22React%22%20OR%20%22Next.js%22)%20(%22Node.js%22%20OR%20%22Python%22)%20remote",
+    "reason": "LinkedIn posts are best reviewed manually or through approved APIs."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn CTO / manager posts",
+    "query": "site:linkedin.com/posts (\"looking for\" OR \"dm me\") (\"senior engineer\" OR \"full stack developer\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fposts%20(%22looking%20for%22%20OR%20%22dm%20me%22)%20(%22senior%20engineer%22%20OR%20%22full%20stack%20developer%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "LinkedIn posts are best reviewed manually or through approved APIs."
+  },
+  {
+    "category": "LinkedIn",
+    "name": "LinkedIn Pulse job mentions",
+    "query": "site:linkedin.com/pulse (\"we are hiring\" OR \"open role\") \"full stack\" \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Alinkedin.com%2Fpulse%20(%22we%20are%20hiring%22%20OR%20%22open%20role%22)%20%22full%20stack%22%20%22remote%22%20after%3A2026-05-01",
+    "reason": "LinkedIn Pulse is best reviewed manually or through approved APIs."
+  },
+  {
+    "category": "Wellfound",
+    "name": "Wellfound full stack / Node",
+    "query": "site:wellfound.com/jobs (\"full stack\" OR \"node.js\" OR \"nestjs\") \"remote\" after:2026-05-04",
+    "url": "https://www.google.com/search?q=site%3Awellfound.com%2Fjobs%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22nestjs%22)%20%22remote%22%20after%3A2026-05-04",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Wellfound",
+    "name": "Wellfound React / Next.js",
+    "query": "site:wellfound.com/jobs (\"react\" OR \"next.js\") \"senior\" \"remote\" after:2026-05-04",
+    "url": "https://www.google.com/search?q=site%3Awellfound.com%2Fjobs%20(%22react%22%20OR%20%22next.js%22)%20%22senior%22%20%22remote%22%20after%3A2026-05-04",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Wellfound",
+    "name": "Wellfound Python / AI stack",
+    "query": "site:wellfound.com/jobs (\"python\" OR \"fastapi\") (\"ai\" OR \"llm\" OR \"rag\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Awellfound.com%2Fjobs%20(%22python%22%20OR%20%22fastapi%22)%20(%22ai%22%20OR%20%22llm%22%20OR%20%22rag%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Wellfound",
+    "name": "Wellfound Laravel / PHP",
+    "query": "site:wellfound.com/jobs (\"laravel\" OR \"php\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Awellfound.com%2Fjobs%20(%22laravel%22%20OR%20%22php%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Remotive",
+    "query": "site:remotive.com (\"full stack\" OR \"node.js\" OR \"react\" OR \"laravel\") \"senior\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Aremotive.com%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22react%22%20OR%20%22laravel%22)%20%22senior%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "We Work Remotely",
+    "query": "site:weworkremotely.com (\"full stack\" OR \"node.js\" OR \"next.js\" OR \"python\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Aweworkremotely.com%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22next.js%22%20OR%20%22python%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Remote.co",
+    "query": "site:remote.co/remote-jobs (\"full stack engineer\" OR \"node developer\" OR \"react developer\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Aremote.co%2Fremote-jobs%20(%22full%20stack%20engineer%22%20OR%20%22node%20developer%22%20OR%20%22react%20developer%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Himalayas",
+    "query": "site:himalayas.app (\"full stack\" OR \"node.js\" OR \"nestjs\" OR \"laravel\") \"senior\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Ahimalayas.app%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22nestjs%22%20OR%20%22laravel%22)%20%22senior%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Indeed remote only",
+    "query": "site:indeed.com (\"senior full stack\" OR \"senior node.js\" OR \"senior react\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Aindeed.com%20(%22senior%20full%20stack%22%20OR%20%22senior%20node.js%22%20OR%20%22senior%20react%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Indeed blocks/special-cases scraping; monitor manually or use an approved API/provider."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Glassdoor",
+    "query": "site:glassdoor.com/job-listing (\"full stack engineer\" OR \"node.js developer\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Aglassdoor.com%2Fjob-listing%20(%22full%20stack%20engineer%22%20OR%20%22node.js%20developer%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "ATS",
+    "name": "Greenhouse ATS",
+    "query": "site:greenhouse.io (\"full stack\" OR \"node.js\" OR \"react\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Agreenhouse.io%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22react%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "ATS",
+    "name": "Lever ATS",
+    "query": "site:jobs.lever.co (\"full stack\" OR \"nestjs\" OR \"next.js\") \"remote\" after:2026-05-11",
+    "url": "https://www.google.com/search?q=site%3Ajobs.lever.co%20(%22full%20stack%22%20OR%20%22nestjs%22%20OR%20%22next.js%22)%20%22remote%22%20after%3A2026-05-11",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "ATS",
+    "name": "Workable ATS",
+    "query": "site:apply.workable.com (\"full stack engineer\" OR \"node.js\" OR \"react developer\") \"remote\" after:2026-05-08",
+    "url": "https://www.google.com/search?q=site%3Aapply.workable.com%20(%22full%20stack%20engineer%22%20OR%20%22node.js%22%20OR%20%22react%20developer%22)%20%22remote%22%20after%3A2026-05-08",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "ATS",
+    "name": "Ashby ATS",
+    "query": "site:jobs.ashbyhq.com (\"full stack engineer\" OR \"node.js\" OR \"react developer\") \"remote\" after:2026-05-11",
+    "url": "https://www.google.com/search?q=site%3Ajobs.ashbyhq.com%20(%22full%20stack%20engineer%22%20OR%20%22node.js%22%20OR%20%22react%20developer%22)%20%22remote%22%20after%3A2026-05-11",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Job Boards",
+    "name": "Toptal",
+    "query": "site:toptal.com (\"full stack\" OR \"node.js\" OR \"react\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Atoptal.com%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22react%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Company Sites",
+    "name": "Generic careers pages",
+    "query": "inurl:careers (\"senior full stack\" OR \"node.js engineer\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=inurl%3Acareers%20(%22senior%20full%20stack%22%20OR%20%22node.js%20engineer%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Company Sites",
+    "name": "Generic jobs pages",
+    "query": "inurl:jobs (\"senior full stack\" OR \"nestjs\" OR \"next.js\") \"remote\" -site:linkedin.com -site:indeed.com after:2026-05-01",
+    "url": "https://www.google.com/search?q=inurl%3Ajobs%20(%22senior%20full%20stack%22%20OR%20%22nestjs%22%20OR%20%22next.js%22)%20%22remote%22%20-site%3Alinkedin.com%20-site%3Aindeed.com%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Company Sites",
+    "name": "AI SaaS startup careers",
+    "query": "inurl:/careers (\"full stack\" OR \"backend engineer\") (\"openai\" OR \"llm\" OR \"ai\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=inurl%3A%2Fcareers%20(%22full%20stack%22%20OR%20%22backend%20engineer%22)%20(%22openai%22%20OR%20%22llm%22%20OR%20%22ai%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Reddit / Forums",
+    "name": "r/remotejs hiring posts",
+    "query": "site:reddit.com/r/remotejs (\"hiring\" OR \"looking for\") (\"full stack\" OR \"node\" OR \"react\") after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Areddit.com%2Fr%2Fremotejs%20(%22hiring%22%20OR%20%22looking%20for%22)%20(%22full%20stack%22%20OR%20%22node%22%20OR%20%22react%22)%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Reddit / Forums",
+    "name": "r/forhire remote engineer listings",
+    "query": "site:reddit.com/r/forhire \"[for hire]\" (\"full stack\" OR \"node.js\" OR \"react\" OR \"laravel\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Areddit.com%2Fr%2Fforhire%20%22%5Bfor%20hire%5D%22%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22react%22%20OR%20%22laravel%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Reddit / Forums",
+    "name": "r/jobbit",
+    "query": "site:reddit.com/r/jobbit (\"full stack\" OR \"node\" OR \"next.js\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Areddit.com%2Fr%2Fjobbit%20(%22full%20stack%22%20OR%20%22node%22%20OR%20%22next.js%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Reddit / Forums",
+    "name": "Twitter/X hiring posts",
+    "query": "site:twitter.com OR site:x.com (\"hiring\" OR \"we're hiring\") (\"full stack engineer\" OR \"node.js\" OR \"next.js\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Atwitter.com%20OR%20site%3Ax.com%20(%22hiring%22%20OR%20%22we're%20hiring%22)%20(%22full%20stack%20engineer%22%20OR%20%22node.js%22%20OR%20%22next.js%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  },
+  {
+    "category": "Reddit / Forums",
+    "name": "Hacker News monthly thread",
+    "query": "site:news.ycombinator.com \"who is hiring\" (\"full stack\" OR \"node.js\" OR \"react\") \"remote\" after:2026-05-01",
+    "url": "https://www.google.com/search?q=site%3Anews.ycombinator.com%20%22who%20is%20hiring%22%20(%22full%20stack%22%20OR%20%22node.js%22%20OR%20%22react%22)%20%22remote%22%20after%3A2026-05-01",
+    "reason": "Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs."
+  }
+]

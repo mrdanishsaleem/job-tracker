@@ -9,7 +9,10 @@ const DATA_FILE = path.join(__dirname, 'jobs.json');
 
 const INCLUDE_KEYWORDS = [
   'full stack', 'fullstack', 'mern', 'react', 'node', 'node.js', 'laravel',
-  'php', 'javascript', 'typescript', 'frontend', 'front end', 'backend', 'back end'
+  'nestjs', 'next.js', 'php', 'javascript', 'typescript', 'frontend',
+  'front end', 'backend', 'back end', 'python', 'fastapi', 'django',
+  'wordpress', 'headless cms', 'sanity', 'ai engineer', 'llm engineer',
+  'rag', 'openai'
 ];
 
 const EXCLUDE_KEYWORDS = [
@@ -34,25 +37,22 @@ const REGION_REMOTE_PATTERNS = [
 const ATS_COMPANIES = {
   greenhouse: [
     'gitlab', 'discord', 'figma', 'robinhood', 'samsara', 'trustpilot',
-    'nearform', 'elastic', 'digitalocean', 'sentry', 'dbtlabs', 'grafana',
-    'postman', 'coursera', 'circleci', 'automattic', 'clever', 'khanacademy'
+    'nearform', 'elastic', 'postman', 'coursera', 'circleci', 'clever',
+    'khanacademy'
   ],
   lever: [
-    'netflix', 'shopify', 'framer', 'vercel', 'hotjar', 'doist', 'toptal',
-    'buffer', 'close', 'ghost', 'gitbook', 'gorgias', 'miro', 'superhuman',
-    'shippo', 'coderpad', 'posthog', 'logrocket', 'stack-overflow'
+    'netflix', 'toptal', 'coderpad', 'logrocket'
   ],
   ashby: [
     'ramp', 'mercury', 'deel', 'notion', 'linear', 'vanta', 'replit',
-    'zapier', 'clay', 'harvey', 'gorgias', 'ironclad', 'lemonade', 'lime',
-    'retool', 'runway', 'sourcegraph', 'canonical'
+    'zapier', 'harvey', 'gorgias', 'lemonade', 'runway'
   ],
   smartrecruiters: [
     'Visa', 'Bosch', 'Equinix', 'Ubisoft', 'Skechers', 'AveryDennison'
   ],
   recruitee: [],
   personio: [
-    'aboutyou', 'taxfix', 'getyourguide', 'flightright'
+    'aboutyou'
   ],
   teamtailor: [],
   breezyhr: [],
@@ -61,32 +61,59 @@ const ATS_COMPANIES = {
   ]
 };
 
+const SEARCH_TARGETS_FILE = path.join(__dirname, 'search-targets.json');
+
+function googleSearchUrl(query) {
+  return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+}
+
+function target(category, name, query, reason = 'Search result pages are monitored manually; use these to discover new direct job URLs or ATS slugs.') {
+  return {
+    category,
+    name,
+    query,
+    url: googleSearchUrl(query),
+    reason
+  };
+}
+
 const SEARCH_TARGETS = [
-  {
-    source: 'linkedin-search',
-    url: 'https://www.linkedin.com/jobs/search/?keywords=remote%20full%20stack%20react%20node%20laravel',
-    reason: 'LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider.'
-  },
-  {
-    source: 'indeed-search',
-    url: 'https://www.indeed.com/jobs?q=remote+full+stack+react+node+laravel&l=Remote',
-    reason: 'Indeed blocks/special-cases scraping; monitor manually or use an approved API/provider.'
-  },
-  {
-    source: 'google-ats-greenhouse',
-    url: 'https://www.google.com/search?q=site%3Aboards.greenhouse.io+remote+%22full+stack%22',
-    reason: 'Search result pages should not be scraped here; use as a manual discovery source for new company slugs.'
-  },
-  {
-    source: 'google-ats-lever',
-    url: 'https://www.google.com/search?q=site%3Ajobs.lever.co+remote+react',
-    reason: 'Search result pages should not be scraped here; use as a manual discovery source for new company slugs.'
-  },
-  {
-    source: 'google-ats-ashby',
-    url: 'https://www.google.com/search?q=site%3Ajobs.ashbyhq.com+remote+laravel+OR+%22full+stack%22',
-    reason: 'Search result pages should not be scraped here; use as a manual discovery source for new company slugs.'
-  }
+  target('Google Core', 'Node.js / NestJS remote', '(intitle:"senior full stack" OR intitle:"node.js engineer" OR intitle:"nestjs developer") "remote" ("node.js" OR "nestjs") after:2026-05-01'),
+  target('Google Core', 'Python / FastAPI / Django remote', '(intitle:"python engineer" OR intitle:"fastapi" OR intitle:"django developer") "fully remote" after:2026-05-01'),
+  target('Google Core', 'React / Next.js remote', '(intitle:"senior react engineer" OR intitle:"next.js developer" OR intitle:"frontend engineer") "remote" ("typescript" OR "tailwind") after:2026-05-01'),
+  target('Google Core', 'Laravel / PHP remote', '(intitle:"laravel developer" OR intitle:"php engineer" OR intitle:"symfony") "remote" ("vue.js" OR "inertia" OR "livewire") after:2026-05-01'),
+  target('Google Core', 'CMS / Headless WordPress remote', '(intitle:"wordpress developer" OR intitle:"headless cms" OR intitle:"sanity developer") "remote" ("next.js" OR "graphql") after:2026-05-01'),
+  target('Google Core', 'AI / LLM / RAG remote', '(intitle:"ai engineer" OR intitle:"llm engineer") "remote" ("rag" OR "openai" OR "vector database") after:2026-05-01'),
+  target('LinkedIn', 'LinkedIn Jobs Node / NestJS', 'site:linkedin.com/jobs "senior full stack" "remote" ("node.js" OR "nestjs") after:2026-05-01', 'LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider.'),
+  target('LinkedIn', 'LinkedIn Jobs React / Next.js', 'site:linkedin.com/jobs ("senior frontend" OR "senior full stack") "remote" ("next.js" OR "react") "typescript" after:2026-05-01', 'LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider.'),
+  target('LinkedIn', 'LinkedIn Jobs Laravel / PHP', 'site:linkedin.com/jobs ("laravel engineer" OR "php developer") "remote" after:2026-05-01', 'LinkedIn blocks reliable unauthenticated scraping; monitor manually or use an approved API/provider.'),
+  target('LinkedIn', 'LinkedIn Posts founders hiring directly', 'site:linkedin.com/posts ("hiring" OR "we\'re hiring") ("full stack" OR "senior full stack" OR "react" OR "node.js") ("remote" OR "worldwide" OR "anywhere") after:2026-05-11', 'LinkedIn posts are best reviewed manually or through approved APIs.'),
+  target('LinkedIn', 'LinkedIn Posts AI / full stack', 'site:linkedin.com/posts ("hiring" OR "looking for") ("AI engineer" OR "full stack engineer") ("React" OR "Next.js") ("Node.js" OR "Python") remote', 'LinkedIn posts are best reviewed manually or through approved APIs.'),
+  target('LinkedIn', 'LinkedIn CTO / manager posts', 'site:linkedin.com/posts ("looking for" OR "dm me") ("senior engineer" OR "full stack developer") "remote" after:2026-05-01', 'LinkedIn posts are best reviewed manually or through approved APIs.'),
+  target('LinkedIn', 'LinkedIn Pulse job mentions', 'site:linkedin.com/pulse ("we are hiring" OR "open role") "full stack" "remote" after:2026-05-01', 'LinkedIn Pulse is best reviewed manually or through approved APIs.'),
+  target('Wellfound', 'Wellfound full stack / Node', 'site:wellfound.com/jobs ("full stack" OR "node.js" OR "nestjs") "remote" after:2026-05-04'),
+  target('Wellfound', 'Wellfound React / Next.js', 'site:wellfound.com/jobs ("react" OR "next.js") "senior" "remote" after:2026-05-04'),
+  target('Wellfound', 'Wellfound Python / AI stack', 'site:wellfound.com/jobs ("python" OR "fastapi") ("ai" OR "llm" OR "rag") "remote" after:2026-05-01'),
+  target('Wellfound', 'Wellfound Laravel / PHP', 'site:wellfound.com/jobs ("laravel" OR "php") "remote" after:2026-05-01'),
+  target('Job Boards', 'Remotive', 'site:remotive.com ("full stack" OR "node.js" OR "react" OR "laravel") "senior" after:2026-05-01'),
+  target('Job Boards', 'We Work Remotely', 'site:weworkremotely.com ("full stack" OR "node.js" OR "next.js" OR "python") after:2026-05-01'),
+  target('Job Boards', 'Remote.co', 'site:remote.co/remote-jobs ("full stack engineer" OR "node developer" OR "react developer") after:2026-05-01'),
+  target('Job Boards', 'Himalayas', 'site:himalayas.app ("full stack" OR "node.js" OR "nestjs" OR "laravel") "senior" after:2026-05-01'),
+  target('Job Boards', 'Indeed remote only', 'site:indeed.com ("senior full stack" OR "senior node.js" OR "senior react") "remote" after:2026-05-01', 'Indeed blocks/special-cases scraping; monitor manually or use an approved API/provider.'),
+  target('Job Boards', 'Glassdoor', 'site:glassdoor.com/job-listing ("full stack engineer" OR "node.js developer") "remote" after:2026-05-01'),
+  target('ATS', 'Greenhouse ATS', 'site:greenhouse.io ("full stack" OR "node.js" OR "react") "remote" after:2026-05-01'),
+  target('ATS', 'Lever ATS', 'site:jobs.lever.co ("full stack" OR "nestjs" OR "next.js") "remote" after:2026-05-11'),
+  target('ATS', 'Workable ATS', 'site:apply.workable.com ("full stack engineer" OR "node.js" OR "react developer") "remote" after:2026-05-08'),
+  target('ATS', 'Ashby ATS', 'site:jobs.ashbyhq.com ("full stack engineer" OR "node.js" OR "react developer") "remote" after:2026-05-11'),
+  target('Job Boards', 'Toptal', 'site:toptal.com ("full stack" OR "node.js" OR "react") "remote" after:2026-05-01'),
+  target('Company Sites', 'Generic careers pages', 'inurl:careers ("senior full stack" OR "node.js engineer") "remote" after:2026-05-01'),
+  target('Company Sites', 'Generic jobs pages', 'inurl:jobs ("senior full stack" OR "nestjs" OR "next.js") "remote" -site:linkedin.com -site:indeed.com after:2026-05-01'),
+  target('Company Sites', 'AI SaaS startup careers', 'inurl:/careers ("full stack" OR "backend engineer") ("openai" OR "llm" OR "ai") "remote" after:2026-05-01'),
+  target('Reddit / Forums', 'r/remotejs hiring posts', 'site:reddit.com/r/remotejs ("hiring" OR "looking for") ("full stack" OR "node" OR "react") after:2026-05-01'),
+  target('Reddit / Forums', 'r/forhire remote engineer listings', 'site:reddit.com/r/forhire "[for hire]" ("full stack" OR "node.js" OR "react" OR "laravel") "remote" after:2026-05-01'),
+  target('Reddit / Forums', 'r/jobbit', 'site:reddit.com/r/jobbit ("full stack" OR "node" OR "next.js") "remote" after:2026-05-01'),
+  target('Reddit / Forums', 'Twitter/X hiring posts', 'site:twitter.com OR site:x.com ("hiring" OR "we\'re hiring") ("full stack engineer" OR "node.js" OR "next.js") "remote" after:2026-05-01'),
+  target('Reddit / Forums', 'Hacker News monthly thread', 'site:news.ycombinator.com "who is hiring" ("full stack" OR "node.js" OR "react") "remote" after:2026-05-01')
 ];
 
 function asArray(value) {
@@ -198,11 +225,19 @@ function normalizeJob(job) {
 
 function loadExisting() {
   if (!fs.existsSync(DATA_FILE)) return [];
-  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8')).map(job => ({
+    ...job,
+    source: job.source || 'legacy',
+    remote_scope: job.remote_scope || detectRemoteScope(job)
+  }));
 }
 
 function saveAll(jobs) {
   fs.writeFileSync(DATA_FILE, JSON.stringify(jobs, null, 2));
+}
+
+function saveSearchTargets() {
+  fs.writeFileSync(SEARCH_TARGETS_FILE, JSON.stringify(SEARCH_TARGETS, null, 2));
 }
 
 async function safeFetch(source, fetcher) {
@@ -277,15 +312,16 @@ async function fetchWeWorkRemotely() {
 }
 
 async function fetchWorkingNomads() {
-  const xml = await fetchText('https://www.workingnomads.com/jobs.rss');
-  return parseRssItems(xml).map(item => ({
+  const data = await fetchJson('https://www.workingnomads.com/api/exposed_jobs/');
+  return asArray(data).map(j => ({
     source: 'workingnomads',
-    company: 'Working Nomads',
-    title: getTag(item, 'title'),
-    link: getTag(item, 'link'),
-    location: 'Remote',
-    posted_at: getTag(item, 'pubDate'),
-    description: getTag(item, 'description')
+    company: j.company || j.company_name || 'Working Nomads',
+    title: j.title,
+    link: j.url || j.apply_url,
+    location: j.location || 'Remote',
+    posted_at: j.pub_date || j.created_at,
+    tags: asArray(j.tags),
+    description: j.description || ''
   }));
 }
 
@@ -323,18 +359,27 @@ async function fetchHackerNewsWhoIsHiring() {
 }
 
 async function fetchYCombinatorJobs() {
-  const data = await fetchJson('https://www.ycombinator.com/jobs/api/jobs?remote=true');
-  return asArray(data).map(j => ({
-    source: 'yc-jobs',
-    company: j.company?.name || j.company_name || 'Y Combinator',
-    title: j.title,
-    link: j.url || `https://www.ycombinator.com/companies/${j.company?.slug || ''}/jobs/${j.id || ''}`,
-    location: j.location || 'Remote',
-    posted_at: j.created_at || j.createdAt,
-    salary: j.salary,
-    tags: asArray(j.tags),
-    description: j.description || ''
-  }));
+  const html = await fetchText('https://www.ycombinator.com/jobs?remote=true');
+  const jobs = [];
+  const seen = new Set();
+  const jobLinkPattern = /href="(\/companies\/[^"]+\/jobs\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let match;
+
+  while ((match = jobLinkPattern.exec(html)) !== null) {
+    const link = `https://www.ycombinator.com${match[1]}`;
+    if (seen.has(link)) continue;
+    seen.add(link);
+    jobs.push({
+      source: 'yc-jobs',
+      company: 'Y Combinator',
+      title: stripHtml(match[2]),
+      link,
+      location: 'Remote',
+      description: ''
+    });
+  }
+
+  return jobs;
 }
 
 async function fetchGreenhouse(slug) {
@@ -502,6 +547,7 @@ function mergeJobs(existing, incoming) {
 }
 
 async function main() {
+  saveSearchTargets();
   const existing = loadExisting();
 
   const sources = [
@@ -540,9 +586,10 @@ async function main() {
   console.log(`Fetched ${fetched.length} raw jobs.`);
   console.log(`Matched ${unique.length} fully remote developer jobs.`);
   console.log(`Added ${added}, updated ${updated}.`);
+  console.log(`Saved ${SEARCH_TARGETS.length} manual search targets to search-targets.json.`);
   console.log('Restricted/manual platforms to monitor:');
   for (const target of SEARCH_TARGETS) {
-    console.log(`- ${target.source}: ${target.url}`);
+    console.log(`- ${target.category} / ${target.name}: ${target.url}`);
   }
 }
 

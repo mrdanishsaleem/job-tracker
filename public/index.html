@@ -342,6 +342,8 @@
         <tr>
           <th class="sortable" data-col="company">Company</th>
           <th class="sortable" data-col="title">Role</th>
+          <th class="sortable" data-col="source">Source</th>
+          <th class="sortable" data-col="remote_scope">Remote</th>
           <th class="sortable" data-col="location">Location</th>
           <th class="sortable" data-col="date_found">Found</th>
           <th>Applied</th>
@@ -391,6 +393,8 @@
       return (
         (j.company  || '').toLowerCase().includes(query) ||
         (j.title    || '').toLowerCase().includes(query) ||
+        (j.source   || '').toLowerCase().includes(query) ||
+        (j.remote_scope || '').toLowerCase().includes(query) ||
         (j.location || '').toLowerCase().includes(query)
       );
     });
@@ -418,6 +422,8 @@
 
       const companyTd = `<td class="td-company">${esc(job.company || '—')}</td>`;
       const titleTd   = `<td class="td-title"><a href="${esc(job.link || '#')}" target="_blank" rel="noopener">${esc(job.title || '—')}</a></td>`;
+      const sourceTd  = `<td class="td-location">${esc(job.source || '—')}</td>`;
+      const remoteTd  = `<td class="td-location">${esc(job.remote_scope || 'unknown')}</td>`;
       const locationTd = `<td class="td-location">${esc(job.location || '—')}</td>`;
       const dateTd    = `<td class="td-date">${esc(job.date_found || '—')}</td>`;
 
@@ -425,7 +431,7 @@
         <div class="checkbox-wrap ${job.applied ? 'checked' : ''}" data-link="${esc(job.link || '')}" data-applied="${job.applied}"></div>
       </td>`;
 
-      tr.innerHTML = companyTd + titleTd + locationTd + dateTd + checkTd;
+      tr.innerHTML = companyTd + titleTd + sourceTd + remoteTd + locationTd + dateTd + checkTd;
       tbody.appendChild(tr);
     });
 
