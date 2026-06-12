@@ -37,7 +37,7 @@ app.post('/api/apply', (req, res) => {
 
   try {
     const jobs = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    const idx = jobs.findIndex(j => j.link === link);
+    const idx = jobs.findIndex((j) => j.link === link);
 
     if (idx === -1) return res.status(404).json({ error: 'Job not found' });
 
