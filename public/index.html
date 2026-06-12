@@ -318,6 +318,7 @@
       Job Tracker
     </div>
     <div class="header-meta">
+      <span class="count-badge">Last 24 hours</span>
       <span id="total-badge" class="count-badge">0 jobs</span>
       <span id="applied-badge" class="applied-badge">0 applied</span>
       <span id="last-updated" style="font-size:12px;"></span>
@@ -345,7 +346,7 @@
           <th class="sortable" data-col="source">Source</th>
           <th class="sortable" data-col="remote_scope">Remote</th>
           <th class="sortable" data-col="location">Location</th>
-          <th class="sortable" data-col="date_found">Found</th>
+          <th class="sortable" data-col="posted_at">Posted</th>
           <th>Applied</th>
         </tr>
       </thead>
@@ -353,18 +354,19 @@
     </table>
     <div class="empty" id="empty-state">
       <div class="empty-icon">📭</div>
-      <h3>No jobs yet</h3>
-      <p>Run <code>node job-finder.js</code> to fetch listings, then refresh this page.</p>
+      <h3>No jobs posted in the last 24 hours</h3>
+      <p>Run <code>npm run find</code> to fetch fresh listings, then refresh this page.</p>
     </div>
   </div>
 
   <!-- Toast -->
   <div id="toast"><div class="t-dot"></div><span id="toast-msg"></span></div>
 
+<script src="/date-utils.js"></script>
 <script>
   // ── State ────────────────────────────────────────────────────
   let allJobs = [];
-  let sortCol = 'date_found';
+  let sortCol = 'posted_at';
   let sortDir = 'desc';
   let activeFilter = 'all'; // 'all' | 'applied' | 'unapplied'
 
@@ -387,6 +389,7 @@
 
     // Filter
     let jobs = allJobs.filter(j => {
+      if (!JobDateUtils.isWithinLast24Hours(j.posted_at)) return false;
       if (activeFilter === 'applied'   && !j.applied) return false;
       if (activeFilter === 'unapplied' && j.applied)  return false;
       if (!query) return true;
@@ -401,9 +404,13 @@
 
     // Sort
     jobs.sort((a, b) => {
+      if (sortCol === 'posted_at') {
+        const ta = JobDateUtils.parsePostedAt(a.posted_at)?.getTime() || 0;
+        const tb = JobDateUtils.parsePostedAt(b.posted_at)?.getTime() || 0;
+        return sortDir === 'asc' ? ta - tb : tb - ta;
+      }
       let va = (a[sortCol] || '').toString().toLowerCase();
-      let vb = (b[sortCol] || '').toString().toLowerCase();
-      if (sortCol === 'date_found') { va = a.date_found || ''; vb = b.date_found || ''; }
+      let vb = (b[sortCol] || '').toLowerCase();
       if (va < vb) return sortDir === 'asc' ? -1 : 1;
       if (va > vb) return sortDir === 'asc' ? 1 : -1;
       return 0;
@@ -425,7 +432,7 @@
       const sourceTd  = `<td class="td-location">${esc(job.source || '—')}</td>`;
       const remoteTd  = `<td class="td-location">${esc(job.remote_scope || 'unknown')}</td>`;
       const locationTd = `<td class="td-location">${esc(job.location || '—')}</td>`;
-      const dateTd    = `<td class="td-date">${esc(job.date_found || '—')}</td>`;
+      const dateTd    = `<td class="td-date">${esc(formatPosted(job.posted_at))}</td>`;
 
       const checkTd   = `<td class="td-applied">
         <div class="checkbox-wrap ${job.applied ? 'checked' : ''}" data-link="${esc(job.link || '')}" data-applied="${job.applied}"></div>
@@ -436,7 +443,7 @@
     });
 
     // Empty state
-    empty.style.display = (allJobs.length === 0) ? 'block' : 'none';
+    empty.style.display = (jobs.length === 0) ? 'block' : 'none';
 
     // Re-attach checkbox listeners
     tbody.querySelectorAll('.checkbox-wrap').forEach(box => {
@@ -501,7 +508,7 @@
         sortDir = sortDir === 'asc' ? 'desc' : 'asc';
       } else {
         sortCol = col;
-        sortDir = col === 'date_found' ? 'desc' : 'asc';
+        sortDir = col === 'posted_at' ? 'desc' : 'asc';
       }
       renderTable();
     });
@@ -541,6 +548,17 @@
   // ── Helpers ──────────────────────────────────────────────────
   function esc(str) {
     return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function formatPosted(value) {
+    const date = JobDateUtils.parsePostedAt(value);
+    if (!date) return '—';
+    return date.toLocaleString(undefined, {
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   }
 
   // ── Init ─────────────────────────────────────────────────────

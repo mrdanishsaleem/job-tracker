@@ -4,6 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { isWithinLast24Hours } = require('./utils/date-utils');
 
 const DATA_FILE = path.join(__dirname, 'jobs.json');
 
@@ -568,7 +569,8 @@ async function main() {
 
   const normalized = fetched
     .map(normalizeJob)
-    .filter(matchesFilters);
+    .filter(matchesFilters)
+    .filter(job => isWithinLast24Hours(job.posted_at));
 
   const unique = [];
   const seen = new Set();
@@ -581,11 +583,14 @@ async function main() {
   }
 
   const { merged, added, updated } = mergeJobs(existing, unique);
-  saveAll(merged);
+  const pruned = merged.filter(job => isWithinLast24Hours(job.posted_at));
+  const removed = merged.length - pruned.length;
+  saveAll(pruned);
 
   console.log(`Fetched ${fetched.length} raw jobs.`);
-  console.log(`Matched ${unique.length} fully remote developer jobs.`);
-  console.log(`Added ${added}, updated ${updated}.`);
+  console.log(`Matched ${unique.length} fully remote developer jobs posted in the last 24 hours.`);
+  console.log(`Added ${added}, updated ${updated}, removed ${removed} stale listings.`);
+  console.log(`Saved ${pruned.length} jobs within the 24-hour window.`);
   console.log(`Saved ${SEARCH_TARGETS.length} manual search targets to search-targets.json.`);
   console.log('Restricted/manual platforms to monitor:');
   for (const target of SEARCH_TARGETS) {
